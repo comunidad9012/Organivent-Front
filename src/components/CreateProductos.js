@@ -4,8 +4,8 @@ import { showSuccessMessage, showErrorMessage, closeMessage } from './messages';
 import { Helmet } from 'react-helmet';
 import '../styles/CreateProductos.css';
 
-function Create() {
-  const [nombre_producto, setnombre_producto] = useState(''); //no larga error pero no lo muestra
+function CreateProducto() { //cambie Create por Create_producto si hay error puede estar aca
+  const [nombre_producto, setnombre_producto] = useState(''); 
   const [descripcion, setContent] = useState('');
   const [precio_venta, setprecio_venta] = useState('');
   const editorRef = useRef(null);
@@ -217,4 +217,4 @@ function Create() {
   );
 }
 
-export default Create;
+export default CreateProducto;

@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import Productos from './Productos';
 import ProductosDetail from './ProductosDetail';
-import Create from './CreateProductos';
+import CreateProducto from './CreateProductos'; // Cambiado a PascalCase
 import SearchForm from './SearchForm';
 import '../styles/index.css'; // Asegúrate de que esta ruta sea correcta
+import CreateClient from './CreateClient';
 
 function Navbar() {
     const location = useLocation(); // Obtener la ubicación actual
@@ -26,10 +27,19 @@ function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        {location.pathname === '/' && (
+                            <Link className="navbar-brand fancy" to="/createClient">
+                                {/* Crear cuenta */}
+                                <span className="top-key"></span>
+                                <span className="text">Crear cuenta</span>
+                                <span className="bottom-key-1"></span>
+                                <span className="bottom-key-2"></span>
+                            </Link>
+                        )}
                         {location.pathname !== '/Productos/editor' && (
                             <li className="nav-item">
                                 <Link className="nav-link active fancy" aria-current="page" to="/Productos/editor">
-                                    {/* Crear noticia */}
+                                    {/* Añadir producto */}
                                     <span className="top-key"></span>
                                     <span className="text">Añadir producto</span>
                                     <span className="bottom-key-1"></span>
@@ -53,7 +63,8 @@ function App() {
             <Routes>
                 <Route path='/' element={<Productos />} />
                 <Route path='/Productos/viewproduct/:id' element={<ProductosDetail />} />
-                <Route path='/Productos/editor' element={<Create />} />
+                <Route path='/Productos/editor' element={<CreateProducto />} /> {/* Cambiado a PascalCase */}
+                <Route path='/createClient' element={<CreateClient />} />
             </Routes>
         </Router>
     );
