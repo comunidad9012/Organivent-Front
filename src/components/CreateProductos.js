@@ -4,7 +4,7 @@ import { showSuccessMessage, showErrorMessage, closeMessage } from './messages';
 import { Helmet } from 'react-helmet';
 import '../styles/CreateProductos.css';
 
-function CreateProducto() { //cambie Create por Create_producto si hay error puede estar aca
+function CreateProducto() { 
   const [nombre_producto, setnombre_producto] = useState(''); 
   const [descripcion, setContent] = useState('');
   const [precio_venta, setprecio_venta] = useState('');
