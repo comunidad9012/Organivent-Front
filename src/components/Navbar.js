@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import Productos from './Productos';
 import ProductosDetail from './ProductosDetail';
-import CreateProducto from './CreateProductos'; // Cambiado a PascalCase
+import CreateProducto from './CreateProductos';
 import SearchForm from './SearchForm';
-import '../styles/index.css'; // Asegúrate de que esta ruta sea correcta
+import '../styles/navbar.css';
 import CreateClient from './CreateClient';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -15,7 +15,7 @@ function Navbar() {
     useEffect(() => {
         fetch('http://localhost:5000/Categoria/showCategorias') // Ruta al endpoint que devuelve las categorías
             .then((response) => response.json())
-            .then((data) => setCategorias(data))
+            .then((data) => setCategorias(data)) 
             .catch((error) => console.error('Error fetching categories:', error));
     }, []);
 
