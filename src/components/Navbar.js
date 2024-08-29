@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import Productos from './Productos';
 import ProductosDetail from './ProductosDetail';
 import CreateProducto from './CreateProductos';
+import Categorias from './Categorias';
 import SearchForm from './SearchForm';
 import '../styles/navbar.css';
 import CreateClient from './CreateClient';
@@ -10,15 +10,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function Navbar() {
     const location = useLocation(); // Obtener la ubicación actual
-    const [categorias, setCategorias] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:5000/Categoria/showCategorias') // Ruta al endpoint que devuelve las categorías
-            .then((response) => response.json())
-            .then((data) => setCategorias(data)) 
-            .catch((error) => console.error('Error fetching categories:', error));
-    }, []);
-
+    
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -55,21 +47,8 @@ function Navbar() {
                                     <span className="bottom-key-2"></span>
                                 </Link>
                             </li>
-                        )}
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categorías
-                            </a>
-                            <ul className="dropdown-menu">
-                                {categorias.map((categoria) => (
-                                    <li key={categoria._id}>
-                                        <Link className="dropdown-item" to={`/Productos?categoria=${categoria._id}`}>
-                                            {categoria.nombre_categoria}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
+                        )}  
+                        <Categorias />
                     </ul>
                     <SearchForm />
                     {/* Encontrar la forma de pasar el json a otro componente */}
