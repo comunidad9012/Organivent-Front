@@ -191,7 +191,7 @@ function CreateProducto() {
           </span>
           <span id="error-message" />
         </div>
-        <div className="container text-center col-md-8 mt-4 mb-4">
+        {/* <div className="container text-center col-md-8 mt-4 mb-4">
           <h5 className='mt-2'>Seleccionar miniatura</h5>
           <div className="gallery">
             {imagenes.map((img, index) => (
@@ -211,7 +211,7 @@ function CreateProducto() {
               <img src={miniatura} alt="Miniatura seleccionada" style={{ width: '200px' }} />
             </div>
           )}
-        </div>
+        </div> */}
       </form>
     </div>
   );
