@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ProductosDisplay from './ProductosDisplay'; 
 
 function SearchForm() {
+    const API_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:5001' : 'http://backend:5000';
     const [palabra, setQuery] = useState('');
     const [Productos, setProductos] = useState([]); 
 
@@ -13,7 +14,7 @@ function SearchForm() {
         event.preventDefault();
         const data = { palabra };
         try {
-            const response = await fetch('http://localhost:5000/Productos/find_product', {
+            const response = await fetch(`${API_URL}/Productos/find_product`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

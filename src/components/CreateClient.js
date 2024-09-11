@@ -3,6 +3,7 @@ import { showSuccessMessage, showErrorMessage, closeMessage } from './messages';
 import { Helmet } from 'react-helmet';
 
 function CreateClient() {
+  const API_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:5001' : 'http://backend:5000';
   const [nombre, setNombre] = useState('');
   const [DNI_cliente, setDNICliente] = useState('');
   const [nombre_usuario, setNombreUsuario] = useState('');
@@ -53,7 +54,7 @@ function CreateClient() {
 
     setLoading(true);
 
-    fetch('http://localhost:5000/Client/createClient', {
+    fetch(`${API_URL}/Client/createClient`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import '../styles/CreateProductos.css';
 
 function CreateProducto() { 
+  const API_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:5001' : 'http://backend:5000';
   const [nombre_producto, setnombre_producto] = useState(''); 
   const [descripcion, setContent] = useState('');
   const [precio_venta, setprecio_venta] = useState('');
@@ -14,11 +15,11 @@ function CreateProducto() {
   const [loading, setLoading] = useState(false); // Estado para manejar la carga
 
   useEffect(() => {
-    fetch('http://localhost:5000/imgs/gallery')
+    fetch(`${API_URL}/imgs/gallery`)
       .then(response => response.json())
       .then(data => setImagenes(data))
       .catch(error => console.error('Error fetching images:', error));
-  }, []);
+  }, [API_URL]);
 
   const handleEditorChange = (content, editor) => {
     setContent(content);
@@ -47,7 +48,7 @@ function CreateProducto() {
 
     setLoading(true); // Mostrar el mensaje de carga
 
-    fetch('http://localhost:5000/Productos/createProductos', {
+    fetch(`${API_URL}/Productos/createProductos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -105,7 +106,7 @@ function CreateProducto() {
                 'alignleft aligncenter alignright alignjustify | ' +
                 'bullist numlist outdent indent | removeformat | image | help',
               content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-              images_upload_url: 'http://localhost:5000/imgs/upload',
+              images_upload_url: `${API_URL}/imgs/upload`,
               automatic_uploads: true,
               file_picker_types: 'image',
               file_picker_callback: (cb, value, meta) => {
@@ -119,7 +120,7 @@ function CreateProducto() {
                   const formData = new FormData();
                   formData.append('file', file);
 
-                  fetch('http://localhost:5000/imgs/upload', {
+                  fetch(`${API_URL}/imgs/upload`, {
                     method: 'POST',
                     body: formData
                   })

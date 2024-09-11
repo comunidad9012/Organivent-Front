@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 function Productos() {
+  const API_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:5001' : 'http://backend:5000';
   const [Productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/Productos/showProductos')
+    fetch(`${API_URL}/Productos/showProductos`)
       .then((response) => response.json())
       .then((data) => setProductos(data))
       .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+  }, [API_URL]);
 
   return (
     <div>

@@ -13,8 +13,8 @@ RUN npm install
 # Copiar el resto de los archivos del proyecto
 COPY . .
 
-# Construir la aplicación para desarrollo
-CMD ["npm", "start"]
-
 # Exponer el puerto que el servidor web utilizará
 EXPOSE 3000
+
+# Construir la aplicación para desarrollo
+CMD ["npm", "start"]
