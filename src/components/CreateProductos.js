@@ -5,7 +5,8 @@ import { Helmet } from 'react-helmet';
 import '../styles/CreateProductos.css';
 
 function CreateProducto() { 
-  const API_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:5001' : 'http://backend:5000';
+  const API_URL = 'http://backend:5000';
+  //const API_URL = process.env.NODE_ENV === 'production' ? 'http://localhost:5001' : 'http://backend:5000';
   const [nombre_producto, setnombre_producto] = useState(''); 
   const [descripcion, setContent] = useState('');
   const [precio_venta, setprecio_venta] = useState('');

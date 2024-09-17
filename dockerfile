@@ -1,5 +1,5 @@
 # Usar una imagen base de Node.js
-FROM node:14
+FROM node:18
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -10,6 +10,9 @@ COPY package*.json ./
 # Instalar las dependencias
 RUN npm install
 
+# Instala ping
+#RUN apt-get install -y iputils-ping
+
 # Copiar el resto de los archivos del proyecto
 COPY . .
 
@@ -17,4 +20,4 @@ COPY . .
 EXPOSE 3000
 
 # Construir la aplicación para desarrollo
-CMD ["npm", "start"]
+CMD ["npm", "start", "--", "--host", "0.0.0.0"]
